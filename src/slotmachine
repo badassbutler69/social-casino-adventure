@@ -1,0 +1,33 @@
+echo "// Simple Slot Machine Game" > src/slot.js
+// Simple Slot Machine Game
+
+const symbols = ["🍒", "🍋", "🔔", "⭐", "7️⃣"];
+const spin = () => {
+  let result = [];
+  for (let i = 0; i < 3; i++) {
+    const randIndex = Math.floor(Math.random() * symbols.length);
+    result.push(symbols[randIndex]);
+  }
+  return result;
+};
+
+const checkWin = (result) => {
+  return result.every((val) => val === result[0]);
+};
+
+// Play the slot machine
+const play = () => {
+  const result = spin();
+  console.log("SPIN:", result.join(" | "));
+  if (checkWin(result)) {
+    console.log("🎉 JACKPOT! You win! 🎉");
+  } else {
+    console.log("Try again!");
+  }
+};
+
+// Run the game
+play();
+git add .
+git commit -m "Add slot machine prototype"
+git push
